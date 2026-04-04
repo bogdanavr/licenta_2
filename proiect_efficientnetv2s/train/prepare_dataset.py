@@ -1,4 +1,4 @@
-﻿"""combined_labels.csv este referinta autoritara pentru etichete si cai, deoarece structura originala a folderelor contine inconsistenta."""
+﻿"""Pregateste subsetul cu 4 emotii folosind combined_labels.csv ca sursa autoritara."""
 import sys
 from pathlib import Path
 
@@ -19,6 +19,7 @@ from tqdm import tqdm
 from train.config import (
     ARCHIVE_DIR,
     COMBINED_LABELS_CSV,
+    IMG_SIZE,
     IMAGES_DIR,
     META_PATH,
     PROCESSED_DIR,
@@ -62,6 +63,7 @@ def load_records(allowed_sources):
         raise FileNotFoundError(f"Nu exista fisierul {COMBINED_LABELS_CSV}")
 
     records = []
+    # CSV-ul este sursa de adevar pentru etichete si cai, deoarece folderele brute contin inconsistente.
     with COMBINED_LABELS_CSV.open("r", encoding="utf-8", newline="") as handle:
         reader = csv.DictReader(handle)
         for row in reader:
@@ -140,6 +142,7 @@ def center_square_crop(image):
 
 
 def crop_face(image):
+    # Detectia se face pe grayscale egalizat pentru a stabiliza contrastul fetei.
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     gray = cv2.equalizeHist(gray)
     faces = FACE_CASCADE.detectMultiScale(
@@ -158,15 +161,23 @@ def crop_face(image):
 
 
 
+def resize_for_training(image):
+    # Uniformizam dimensiunea imaginilor offline pentru a reduce munca din DataLoader in timpul antrenarii.
+    return cv2.resize(image, (IMG_SIZE, IMG_SIZE), interpolation=cv2.INTER_AREA)
+
+
+
 def save_processed_image(src_path, dst_path):
     image = cv2.imread(str(src_path))
     if image is None:
         raise RuntimeError(f"Nu am putut citi imaginea {src_path}")
 
     cropped, found_face = crop_face(image)
+    resized = resize_for_training(cropped)
     dst_path.parent.mkdir(parents=True, exist_ok=True)
 
-    success = cv2.imwrite(str(dst_path), cropped)
+    # Salvam direct versiunea finala 320x320 pentru ca modelul sa primeasca intrari uniforme.
+    success = cv2.imwrite(str(dst_path), resized)
     if not success:
         raise RuntimeError(f"Nu am putut salva imaginea procesata la {dst_path}")
 
@@ -220,6 +231,7 @@ def build_meta(split_stats, sources):
             "face_crop": True,
             "face_detector": "opencv_haar_frontalface_default",
             "fallback_when_no_face": "center_square_crop",
+            "saved_image_size": [IMG_SIZE, IMG_SIZE],
         },
         "splits": {},
     }

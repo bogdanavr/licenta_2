@@ -1,0 +1,71 @@
+{
+  "dataset_csv": "/home/bogdan_avr/licenta2/archive/combined_labels.csv",
+  "archive_dir": "/home/bogdan_avr/licenta2/archive",
+  "target_labels": [
+    "happy",
+    "neutral",
+    "sad",
+    "surprise"
+  ],
+  "sources": [
+    "original",
+    "augmented"
+  ],
+  "ratios": {
+    "train": 0.8,
+    "val": 0.1,
+    "test": 0.1
+  },
+  "preprocessing": {
+    "face_crop": true,
+    "face_detector": "opencv_haar_frontalface_default",
+    "fallback_when_no_face": "center_square_crop"
+  },
+  "splits": {
+    "train": {
+      "total": 15644,
+      "face_detected": 15035,
+      "fallback_center_crop": 609,
+      "labels": {
+        "happy": 3911,
+        "neutral": 3911,
+        "sad": 3911,
+        "surprise": 3911
+      },
+      "sources": {
+        "original": 12576,
+        "augmented": 3068
+      }
+    },
+    "val": {
+      "total": 1952,
+      "face_detected": 1878,
+      "fallback_center_crop": 74,
+      "labels": {
+        "happy": 488,
+        "neutral": 488,
+        "sad": 488,
+        "surprise": 488
+      },
+      "sources": {
+        "original": 1574,
+        "augmented": 378
+      }
+    },
+    "test": {
+      "total": 1960,
+      "face_detected": 1869,
+      "fallback_center_crop": 91,
+      "labels": {
+        "happy": 490,
+        "neutral": 490,
+        "sad": 490,
+        "surprise": 490
+      },
+      "sources": {
+        "original": 1575,
+        "augmented": 385
+      }
+    }
+  }
+}

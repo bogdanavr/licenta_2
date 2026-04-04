@@ -1,0 +1,13 @@
+archive/
+**/images/
+*.jpg
+*.jpeg
+*.png
+*.bmp
+*.webp
+*.pth
+*.pt
+*.onnx
+*.npy
+*.npz
+__pycache__/

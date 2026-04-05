@@ -1,0 +1,381 @@
+[2026-01-17 16:15:02.643] [7954] [HailoRT] [info] [vdevice.cpp:535] [create] Creating vdevice with params: device_count: 1, scheduling_algorithm: NONE, multi_process_service: false
+[2026-01-17 16:15:02.655] [7954] [HailoRT] [info] [device.cpp:51] [Device] OS Version: Linux 6.12.62+rpt-rpi-2712 #1 SMP PREEMPT Debian 1:6.12.62-1+rpt1 (2025-12-18) aarch64
+[2026-01-17 16:15:02.655] [7954] [HailoRT] [info] [control.cpp:113] [control__parse_identify_results] firmware_version is: 4.23.0
+[2026-01-17 16:15:02.655] [7954] [HailoRT] [info] [vdevice.cpp:682] [create] VDevice Infos: 0001:01:00.0
+[2026-01-17 16:15:02.660] [7954] [HailoRT] [info] [buffer_requirements.cpp:198] [find_initial_desc_page_size] Using non-default initial_desc_page_size of 64, due to a small transfer size (8)
+[2026-01-17 16:15:02.660] [7954] [HailoRT] [info] [buffer_requirements.cpp:198] [find_initial_desc_page_size] Using non-default initial_desc_page_size of 256, due to a small transfer size (144)
+[2026-01-17 16:15:02.661] [7954] [HailoRT] [info] [internal_buffer_manager.cpp:77] [print_execution_results] Planned internal buffer memory: CMA=0 CMA-Desc=458752 Pinned=623104. memory to edge layer usage factor is 0.8994826
+[2026-01-17 16:15:02.661] [7954] [HailoRT] [info] [internal_buffer_manager.cpp:86] [print_execution_results] Default Internal buffer planner executed successfully
+[2026-01-17 16:15:02.681] [7954] [HailoRT] [info] [device_internal.cpp:57] [configure] Configuring HEF took 25.150738 milliseconds
+[2026-01-17 16:15:02.681] [7954] [HailoRT] [info] [vdevice.cpp:780] [configure] Configuring HEF on VDevice took 25.408778 milliseconds
+[2026-01-17 16:15:02.717] [7954] [HailoRT] [info] [edge_elements.cpp:52] [create] Created (HwWriteEl3emotion_model/input_layer1 | hw_frame_size: 150528)
+[2026-01-17 16:15:02.717] [7954] [HailoRT] [info] [vstream.cpp:754] [InputVStreamImpl] Creating emotion_model/input_layer1...
+[2026-01-17 16:15:02.717] [7954] [HailoRT] [info] [vstream_builder.cpp:102] [create_inputs] Input pipeline 'emotion_model/input_layer1': (HwWriteEl3emotion_model/input_layer1 | hw_frame_size: 150528) >> HW
+[2026-01-17 16:15:02.717] [7954] [HailoRT] [info] [edge_elements.cpp:287] [create] Created (HwReadEl0emotion_model/fc33 | hw_frame_size: 8)
+[2026-01-17 16:15:02.717] [7954] [HailoRT] [info] [queue_elements.cpp:657] [create] Created (PullQEl_hw_read0emotion_model/fc33)
+[2026-01-17 16:15:02.717] [7954] [HailoRT] [info] [filter_elements.cpp:372] [create] Created (PostInferEl0emotion_model/fc33 | Quantization - src_type: UINT8, dst_type FLOAT32, limvals_min: -1.67608, limvals_max: 3.12617)
+[2026-01-17 16:15:02.717] [7954] [HailoRT] [info] [queue_elements.cpp:800] [create] Created (UserBuffQEl0emotion_model/fc33 | timeout: 10s)
+[2026-01-17 16:15:02.717] [7954] [HailoRT] [info] [vstream.cpp:1114] [OutputVStreamImpl] Creating emotion_model/fc33...
+[2026-01-17 16:15:02.717] [7954] [HailoRT] [info] [vstream_builder.cpp:220] [create_outputs] Output pipeline 'emotion_model/fc33': HW >> (HwReadEl0emotion_model/fc33 | hw_frame_size: 8) >> (PullQEl_hw_read0emotion_model/fc33) >> (PostInferEl0emotion_model/fc33 | Quantization - src_type: UINT8, dst_type FLOAT32, limvals_min: -1.67608, limvals_max: 3.12617) >> (UserBuffQEl0emotion_model/fc33 | timeout: 10s)
+[2026-01-17 16:15:02.717] [7954] [HailoRT] [info] [core_op.cpp:156] [activate] Activating emotion_model took 0.204113 milliseconds. Note that the function is asynchronous and thus the network is not fully activated yet.
+[2026-01-17 16:15:02.717] [7954] [HailoRT] [info] [core_op.cpp:156] [activate] Activating emotion_model took 0.212336 milliseconds. Note that the function is asynchronous and thus the network is not fully activated yet.
+[2026-01-17 16:15:10.326] [7970] [HailoRT] [info] [vdevice_native_stream.cpp:331] [read_impl] Failed read from stream HAILO_STREAM_NOT_ACTIVATED(72) (device: 0001:01:00.0)
+[2026-01-17 16:15:10.326] [7954] [HailoRT] [info] [core_op.cpp:186] [deactivate] Deactivating took 1.142769 ms
+[2026-01-17 16:15:10.326] [7954] [HailoRT] [info] [core_op.cpp:186] [deactivate] Deactivating took 1.174603 ms
+[2026-01-17 16:15:10.327] [7970] [HailoRT] [info] [queue_elements.cpp:734] [run_in_thread] Shutdown event was signaled in run_pull of queue element PullQEl_hw_read0emotion_model/fc33!
+[2026-01-17 16:15:10.327] [7971] [HailoRT] [info] [queue_elements.cpp:855] [run_in_thread] Shutdown event was signaled in dequeue of UserBuffQEl0emotion_model/fc33!
+[2026-01-17 16:15:10.327] [7970] [HailoRT] [info] [queue_elements.cpp:68] [operator()] Thread in element PullQEl_hw_read0emotion_model/fc33 is not running anymore, exiting..
+[2026-01-17 16:15:10.327] [7954] [HailoRT] [info] [queue_elements.cpp:46] [~BaseQueueElement] Queue element PullQEl_hw_read0emotion_model/fc33 has 0 frames in his Queue on destruction
+[2026-01-17 16:15:10.327] [7971] [HailoRT] [info] [queue_elements.cpp:68] [operator()] Thread in element UserBuffQEl0emotion_model/fc33 is not running anymore, exiting..
+[2026-01-17 16:15:10.327] [7954] [HailoRT] [info] [queue_elements.cpp:46] [~BaseQueueElement] Queue element UserBuffQEl0emotion_model/fc33 has 0 frames in his Queue on destruction
+[2026-01-17 16:25:39.647] [8275] [HailoRT] [info] [vdevice.cpp:535] [create] Creating vdevice with params: device_count: 1, scheduling_algorithm: NONE, multi_process_service: false
+[2026-01-17 16:25:39.659] [8275] [HailoRT] [info] [device.cpp:51] [Device] OS Version: Linux 6.12.62+rpt-rpi-2712 #1 SMP PREEMPT Debian 1:6.12.62-1+rpt1 (2025-12-18) aarch64
+[2026-01-17 16:25:39.659] [8275] [HailoRT] [info] [control.cpp:113] [control__parse_identify_results] firmware_version is: 4.23.0
+[2026-01-17 16:25:39.659] [8275] [HailoRT] [info] [vdevice.cpp:682] [create] VDevice Infos: 0001:01:00.0
+[2026-01-17 16:25:39.668] [8275] [HailoRT] [info] [buffer_requirements.cpp:198] [find_initial_desc_page_size] Using non-default initial_desc_page_size of 64, due to a small transfer size (8)
+[2026-01-17 16:25:39.668] [8275] [HailoRT] [info] [buffer_requirements.cpp:198] [find_initial_desc_page_size] Using non-default initial_desc_page_size of 256, due to a small transfer size (144)
+[2026-01-17 16:25:39.668] [8275] [HailoRT] [info] [internal_buffer_manager.cpp:77] [print_execution_results] Planned internal buffer memory: CMA=0 CMA-Desc=458752 Pinned=623104. memory to edge layer usage factor is 0.8994826
+[2026-01-17 16:25:39.668] [8275] [HailoRT] [info] [internal_buffer_manager.cpp:86] [print_execution_results] Default Internal buffer planner executed successfully
+[2026-01-17 16:25:39.688] [8275] [HailoRT] [info] [device_internal.cpp:57] [configure] Configuring HEF took 25.402039 milliseconds
+[2026-01-17 16:25:39.688] [8275] [HailoRT] [info] [vdevice.cpp:780] [configure] Configuring HEF on VDevice took 29.144537 milliseconds
+[2026-01-17 16:25:39.726] [8275] [HailoRT] [info] [edge_elements.cpp:52] [create] Created (HwWriteEl3emotion_model/input_layer1 | hw_frame_size: 150528)
+[2026-01-17 16:25:39.726] [8275] [HailoRT] [info] [vstream.cpp:754] [InputVStreamImpl] Creating emotion_model/input_layer1...
+[2026-01-17 16:25:39.726] [8275] [HailoRT] [info] [vstream_builder.cpp:102] [create_inputs] Input pipeline 'emotion_model/input_layer1': (HwWriteEl3emotion_model/input_layer1 | hw_frame_size: 150528) >> HW
+[2026-01-17 16:25:39.726] [8275] [HailoRT] [info] [edge_elements.cpp:287] [create] Created (HwReadEl0emotion_model/fc33 | hw_frame_size: 8)
+[2026-01-17 16:25:39.727] [8275] [HailoRT] [info] [queue_elements.cpp:657] [create] Created (PullQEl_hw_read0emotion_model/fc33)
+[2026-01-17 16:25:39.727] [8275] [HailoRT] [info] [filter_elements.cpp:372] [create] Created (PostInferEl0emotion_model/fc33 | Quantization - src_type: UINT8, dst_type FLOAT32, limvals_min: -1.67608, limvals_max: 3.12617)
+[2026-01-17 16:25:39.727] [8275] [HailoRT] [info] [queue_elements.cpp:800] [create] Created (UserBuffQEl0emotion_model/fc33 | timeout: 10s)
+[2026-01-17 16:25:39.727] [8275] [HailoRT] [info] [vstream.cpp:1114] [OutputVStreamImpl] Creating emotion_model/fc33...
+[2026-01-17 16:25:39.727] [8275] [HailoRT] [info] [vstream_builder.cpp:220] [create_outputs] Output pipeline 'emotion_model/fc33': HW >> (HwReadEl0emotion_model/fc33 | hw_frame_size: 8) >> (PullQEl_hw_read0emotion_model/fc33) >> (PostInferEl0emotion_model/fc33 | Quantization - src_type: UINT8, dst_type FLOAT32, limvals_min: -1.67608, limvals_max: 3.12617) >> (UserBuffQEl0emotion_model/fc33 | timeout: 10s)
+[2026-01-17 16:25:39.727] [8275] [HailoRT] [info] [core_op.cpp:156] [activate] Activating emotion_model took 0.232686 milliseconds. Note that the function is asynchronous and thus the network is not fully activated yet.
+[2026-01-17 16:25:39.727] [8275] [HailoRT] [info] [core_op.cpp:156] [activate] Activating emotion_model took 0.241483 milliseconds. Note that the function is asynchronous and thus the network is not fully activated yet.
+[2026-01-17 16:26:02.668] [8289] [HailoRT] [info] [vdevice_native_stream.cpp:331] [read_impl] Failed read from stream HAILO_STREAM_NOT_ACTIVATED(72) (device: 0001:01:00.0)
+[2026-01-17 16:26:02.668] [8275] [HailoRT] [info] [core_op.cpp:186] [deactivate] Deactivating took 0.499632 ms
+[2026-01-17 16:26:02.668] [8275] [HailoRT] [info] [core_op.cpp:186] [deactivate] Deactivating took 0.536595 ms
+[2026-01-17 16:26:02.668] [8289] [HailoRT] [info] [queue_elements.cpp:734] [run_in_thread] Shutdown event was signaled in run_pull of queue element PullQEl_hw_read0emotion_model/fc33!
+[2026-01-17 16:26:02.668] [8290] [HailoRT] [info] [queue_elements.cpp:855] [run_in_thread] Shutdown event was signaled in dequeue of UserBuffQEl0emotion_model/fc33!
+[2026-01-17 16:26:02.668] [8289] [HailoRT] [info] [queue_elements.cpp:68] [operator()] Thread in element PullQEl_hw_read0emotion_model/fc33 is not running anymore, exiting..
+[2026-01-17 16:26:02.668] [8275] [HailoRT] [info] [queue_elements.cpp:46] [~BaseQueueElement] Queue element PullQEl_hw_read0emotion_model/fc33 has 0 frames in his Queue on destruction
+[2026-01-17 16:26:02.668] [8290] [HailoRT] [info] [queue_elements.cpp:68] [operator()] Thread in element UserBuffQEl0emotion_model/fc33 is not running anymore, exiting..
+[2026-01-17 16:26:02.668] [8275] [HailoRT] [info] [queue_elements.cpp:46] [~BaseQueueElement] Queue element UserBuffQEl0emotion_model/fc33 has 0 frames in his Queue on destruction
+[2026-01-17 16:30:25.253] [8988] [HailoRT] [info] [vdevice.cpp:535] [create] Creating vdevice with params: device_count: 1, scheduling_algorithm: NONE, multi_process_service: false
+[2026-01-17 16:30:25.265] [8988] [HailoRT] [info] [device.cpp:51] [Device] OS Version: Linux 6.12.62+rpt-rpi-2712 #1 SMP PREEMPT Debian 1:6.12.62-1+rpt1 (2025-12-18) aarch64
+[2026-01-17 16:30:25.266] [8988] [HailoRT] [info] [control.cpp:113] [control__parse_identify_results] firmware_version is: 4.23.0
+[2026-01-17 16:30:25.266] [8988] [HailoRT] [info] [vdevice.cpp:682] [create] VDevice Infos: 0001:01:00.0
+[2026-01-17 16:30:25.271] [8988] [HailoRT] [info] [buffer_requirements.cpp:198] [find_initial_desc_page_size] Using non-default initial_desc_page_size of 64, due to a small transfer size (8)
+[2026-01-17 16:30:25.271] [8988] [HailoRT] [info] [buffer_requirements.cpp:198] [find_initial_desc_page_size] Using non-default initial_desc_page_size of 256, due to a small transfer size (144)
+[2026-01-17 16:30:25.271] [8988] [HailoRT] [info] [internal_buffer_manager.cpp:77] [print_execution_results] Planned internal buffer memory: CMA=0 CMA-Desc=458752 Pinned=623104. memory to edge layer usage factor is 0.8994826
+[2026-01-17 16:30:25.271] [8988] [HailoRT] [info] [internal_buffer_manager.cpp:86] [print_execution_results] Default Internal buffer planner executed successfully
+[2026-01-17 16:30:25.292] [8988] [HailoRT] [info] [device_internal.cpp:57] [configure] Configuring HEF took 26.189916 milliseconds
+[2026-01-17 16:30:25.292] [8988] [HailoRT] [info] [vdevice.cpp:780] [configure] Configuring HEF on VDevice took 26.447399 milliseconds
+[2026-01-17 16:30:25.328] [8988] [HailoRT] [info] [edge_elements.cpp:52] [create] Created (HwWriteEl3emotion_model/input_layer1 | hw_frame_size: 150528)
+[2026-01-17 16:30:25.328] [8988] [HailoRT] [info] [vstream.cpp:754] [InputVStreamImpl] Creating emotion_model/input_layer1...
+[2026-01-17 16:30:25.328] [8988] [HailoRT] [info] [vstream_builder.cpp:102] [create_inputs] Input pipeline 'emotion_model/input_layer1': (HwWriteEl3emotion_model/input_layer1 | hw_frame_size: 150528) >> HW
+[2026-01-17 16:30:25.328] [8988] [HailoRT] [info] [edge_elements.cpp:287] [create] Created (HwReadEl0emotion_model/fc33 | hw_frame_size: 8)
+[2026-01-17 16:30:25.328] [8988] [HailoRT] [info] [queue_elements.cpp:657] [create] Created (PullQEl_hw_read0emotion_model/fc33)
+[2026-01-17 16:30:25.328] [8988] [HailoRT] [info] [filter_elements.cpp:372] [create] Created (PostInferEl0emotion_model/fc33 | Quantization - src_type: UINT8, dst_type FLOAT32, limvals_min: -1.67608, limvals_max: 3.12617)
+[2026-01-17 16:30:25.328] [8988] [HailoRT] [info] [queue_elements.cpp:800] [create] Created (UserBuffQEl0emotion_model/fc33 | timeout: 10s)
+[2026-01-17 16:30:25.328] [8988] [HailoRT] [info] [vstream.cpp:1114] [OutputVStreamImpl] Creating emotion_model/fc33...
+[2026-01-17 16:30:25.328] [8988] [HailoRT] [info] [vstream_builder.cpp:220] [create_outputs] Output pipeline 'emotion_model/fc33': HW >> (HwReadEl0emotion_model/fc33 | hw_frame_size: 8) >> (PullQEl_hw_read0emotion_model/fc33) >> (PostInferEl0emotion_model/fc33 | Quantization - src_type: UINT8, dst_type FLOAT32, limvals_min: -1.67608, limvals_max: 3.12617) >> (UserBuffQEl0emotion_model/fc33 | timeout: 10s)
+[2026-01-17 16:30:25.329] [8988] [HailoRT] [info] [core_op.cpp:156] [activate] Activating emotion_model took 0.203001 milliseconds. Note that the function is asynchronous and thus the network is not fully activated yet.
+[2026-01-17 16:30:25.329] [8988] [HailoRT] [info] [core_op.cpp:156] [activate] Activating emotion_model took 0.211502 milliseconds. Note that the function is asynchronous and thus the network is not fully activated yet.
+[2026-01-17 16:31:02.261] [9002] [HailoRT] [info] [vdevice_native_stream.cpp:331] [read_impl] Failed read from stream HAILO_STREAM_NOT_ACTIVATED(72) (device: 0001:01:00.0)
+[2026-01-17 16:31:02.261] [8988] [HailoRT] [info] [core_op.cpp:186] [deactivate] Deactivating took 0.5408 ms
+[2026-01-17 16:31:02.261] [8988] [HailoRT] [info] [core_op.cpp:186] [deactivate] Deactivating took 0.5758 ms
+[2026-01-17 16:31:02.261] [9002] [HailoRT] [info] [queue_elements.cpp:734] [run_in_thread] Shutdown event was signaled in run_pull of queue element PullQEl_hw_read0emotion_model/fc33!
+[2026-01-17 16:31:02.261] [9003] [HailoRT] [info] [queue_elements.cpp:855] [run_in_thread] Shutdown event was signaled in dequeue of UserBuffQEl0emotion_model/fc33!
+[2026-01-17 16:31:02.261] [9002] [HailoRT] [info] [queue_elements.cpp:68] [operator()] Thread in element PullQEl_hw_read0emotion_model/fc33 is not running anymore, exiting..
+[2026-01-17 16:31:02.261] [8988] [HailoRT] [info] [queue_elements.cpp:46] [~BaseQueueElement] Queue element PullQEl_hw_read0emotion_model/fc33 has 0 frames in his Queue on destruction
+[2026-01-17 16:31:02.261] [9003] [HailoRT] [info] [queue_elements.cpp:68] [operator()] Thread in element UserBuffQEl0emotion_model/fc33 is not running anymore, exiting..
+[2026-01-17 16:31:02.262] [8988] [HailoRT] [info] [queue_elements.cpp:46] [~BaseQueueElement] Queue element UserBuffQEl0emotion_model/fc33 has 0 frames in his Queue on destruction
+[2026-01-17 16:31:31.012] [10210] [HailoRT] [info] [vdevice.cpp:535] [create] Creating vdevice with params: device_count: 1, scheduling_algorithm: NONE, multi_process_service: false
+[2026-01-17 16:31:31.023] [10210] [HailoRT] [info] [device.cpp:51] [Device] OS Version: Linux 6.12.62+rpt-rpi-2712 #1 SMP PREEMPT Debian 1:6.12.62-1+rpt1 (2025-12-18) aarch64
+[2026-01-17 16:31:31.023] [10210] [HailoRT] [info] [control.cpp:113] [control__parse_identify_results] firmware_version is: 4.23.0
+[2026-01-17 16:31:31.023] [10210] [HailoRT] [info] [vdevice.cpp:682] [create] VDevice Infos: 0001:01:00.0
+[2026-01-17 16:31:31.028] [10210] [HailoRT] [info] [buffer_requirements.cpp:198] [find_initial_desc_page_size] Using non-default initial_desc_page_size of 64, due to a small transfer size (8)
+[2026-01-17 16:31:31.028] [10210] [HailoRT] [info] [buffer_requirements.cpp:198] [find_initial_desc_page_size] Using non-default initial_desc_page_size of 256, due to a small transfer size (144)
+[2026-01-17 16:31:31.029] [10210] [HailoRT] [info] [internal_buffer_manager.cpp:77] [print_execution_results] Planned internal buffer memory: CMA=0 CMA-Desc=458752 Pinned=623104. memory to edge layer usage factor is 0.8994826
+[2026-01-17 16:31:31.029] [10210] [HailoRT] [info] [internal_buffer_manager.cpp:86] [print_execution_results] Default Internal buffer planner executed successfully
+[2026-01-17 16:31:31.052] [10210] [HailoRT] [info] [device_internal.cpp:57] [configure] Configuring HEF took 28.812939 milliseconds
+[2026-01-17 16:31:31.052] [10210] [HailoRT] [info] [vdevice.cpp:780] [configure] Configuring HEF on VDevice took 29.066496 milliseconds
+[2026-01-17 16:31:31.088] [10210] [HailoRT] [info] [edge_elements.cpp:52] [create] Created (HwWriteEl3emotion_model/input_layer1 | hw_frame_size: 150528)
+[2026-01-17 16:31:31.088] [10210] [HailoRT] [info] [vstream.cpp:754] [InputVStreamImpl] Creating emotion_model/input_layer1...
+[2026-01-17 16:31:31.088] [10210] [HailoRT] [info] [vstream_builder.cpp:102] [create_inputs] Input pipeline 'emotion_model/input_layer1': (HwWriteEl3emotion_model/input_layer1 | hw_frame_size: 150528) >> HW
+[2026-01-17 16:31:31.088] [10210] [HailoRT] [info] [edge_elements.cpp:287] [create] Created (HwReadEl0emotion_model/fc33 | hw_frame_size: 8)
+[2026-01-17 16:31:31.088] [10210] [HailoRT] [info] [queue_elements.cpp:657] [create] Created (PullQEl_hw_read0emotion_model/fc33)
+[2026-01-17 16:31:31.088] [10210] [HailoRT] [info] [filter_elements.cpp:372] [create] Created (PostInferEl0emotion_model/fc33 | Quantization - src_type: UINT8, dst_type FLOAT32, limvals_min: -1.67608, limvals_max: 3.12617)
+[2026-01-17 16:31:31.088] [10210] [HailoRT] [info] [queue_elements.cpp:800] [create] Created (UserBuffQEl0emotion_model/fc33 | timeout: 10s)
+[2026-01-17 16:31:31.088] [10210] [HailoRT] [info] [vstream.cpp:1114] [OutputVStreamImpl] Creating emotion_model/fc33...
+[2026-01-17 16:31:31.088] [10210] [HailoRT] [info] [vstream_builder.cpp:220] [create_outputs] Output pipeline 'emotion_model/fc33': HW >> (HwReadEl0emotion_model/fc33 | hw_frame_size: 8) >> (PullQEl_hw_read0emotion_model/fc33) >> (PostInferEl0emotion_model/fc33 | Quantization - src_type: UINT8, dst_type FLOAT32, limvals_min: -1.67608, limvals_max: 3.12617) >> (UserBuffQEl0emotion_model/fc33 | timeout: 10s)
+[2026-01-17 16:31:31.088] [10210] [HailoRT] [info] [core_op.cpp:156] [activate] Activating emotion_model took 0.207149 milliseconds. Note that the function is asynchronous and thus the network is not fully activated yet.
+[2026-01-17 16:31:31.088] [10210] [HailoRT] [info] [core_op.cpp:156] [activate] Activating emotion_model took 0.215908 milliseconds. Note that the function is asynchronous and thus the network is not fully activated yet.
+[2026-01-17 16:32:55.634] [10224] [HailoRT] [info] [vdevice_native_stream.cpp:331] [read_impl] Failed read from stream HAILO_STREAM_NOT_ACTIVATED(72) (device: 0001:01:00.0)
+[2026-01-17 16:32:55.635] [10210] [HailoRT] [info] [core_op.cpp:186] [deactivate] Deactivating took 0.492763 ms
+[2026-01-17 16:32:55.635] [10210] [HailoRT] [info] [core_op.cpp:186] [deactivate] Deactivating took 0.523318 ms
+[2026-01-17 16:32:55.635] [10224] [HailoRT] [info] [queue_elements.cpp:734] [run_in_thread] Shutdown event was signaled in run_pull of queue element PullQEl_hw_read0emotion_model/fc33!
+[2026-01-17 16:32:55.635] [10225] [HailoRT] [info] [queue_elements.cpp:855] [run_in_thread] Shutdown event was signaled in dequeue of UserBuffQEl0emotion_model/fc33!
+[2026-01-17 16:32:55.635] [10224] [HailoRT] [info] [queue_elements.cpp:68] [operator()] Thread in element PullQEl_hw_read0emotion_model/fc33 is not running anymore, exiting..
+[2026-01-17 16:32:55.635] [10210] [HailoRT] [info] [queue_elements.cpp:46] [~BaseQueueElement] Queue element PullQEl_hw_read0emotion_model/fc33 has 0 frames in his Queue on destruction
+[2026-01-17 16:32:55.635] [10225] [HailoRT] [info] [queue_elements.cpp:68] [operator()] Thread in element UserBuffQEl0emotion_model/fc33 is not running anymore, exiting..
+[2026-01-17 16:32:55.635] [10210] [HailoRT] [info] [queue_elements.cpp:46] [~BaseQueueElement] Queue element UserBuffQEl0emotion_model/fc33 has 0 frames in his Queue on destruction
+[2026-01-17 20:40:06.984] [1716] [HailoRT] [info] [vdevice.cpp:535] [create] Creating vdevice with params: device_count: 1, scheduling_algorithm: NONE, multi_process_service: false
+[2026-01-17 20:40:07.001] [1716] [HailoRT] [info] [device.cpp:51] [Device] OS Version: Linux 6.12.62+rpt-rpi-2712 #1 SMP PREEMPT Debian 1:6.12.62-1+rpt1 (2025-12-18) aarch64
+[2026-01-17 20:40:07.001] [1716] [HailoRT] [info] [control.cpp:113] [control__parse_identify_results] firmware_version is: 4.23.0
+[2026-01-17 20:40:07.001] [1716] [HailoRT] [info] [vdevice.cpp:682] [create] VDevice Infos: 0001:01:00.0
+[2026-01-17 20:40:07.013] [1716] [HailoRT] [info] [buffer_requirements.cpp:198] [find_initial_desc_page_size] Using non-default initial_desc_page_size of 64, due to a small transfer size (8)
+[2026-01-17 20:40:07.013] [1716] [HailoRT] [info] [internal_buffer_manager.cpp:77] [print_execution_results] Planned internal buffer memory: CMA=0 CMA-Desc=524288 Pinned=316928. memory to edge layer usage factor is 0.6916201
+[2026-01-17 20:40:07.013] [1716] [HailoRT] [info] [internal_buffer_manager.cpp:86] [print_execution_results] Default Internal buffer planner executed successfully
+[2026-01-17 20:40:07.040] [1716] [HailoRT] [info] [device_internal.cpp:57] [configure] Configuring HEF took 37.835519 milliseconds
+[2026-01-17 20:40:07.042] [1716] [HailoRT] [info] [vdevice.cpp:780] [configure] Configuring HEF on VDevice took 40.335458 milliseconds
+[2026-01-17 20:40:07.083] [1716] [HailoRT] [info] [edge_elements.cpp:52] [create] Created (HwWriteEl0emotion_model/input_layer1 | hw_frame_size: 150528)
+[2026-01-17 20:40:07.083] [1716] [HailoRT] [info] [vstream.cpp:754] [InputVStreamImpl] Creating emotion_model/input_layer1...
+[2026-01-17 20:40:07.083] [1716] [HailoRT] [info] [vstream_builder.cpp:102] [create_inputs] Input pipeline 'emotion_model/input_layer1': (HwWriteEl0emotion_model/input_layer1 | hw_frame_size: 150528) >> HW
+[2026-01-17 20:40:07.083] [1716] [HailoRT] [info] [edge_elements.cpp:287] [create] Created (HwReadEl0emotion_model/fc33 | hw_frame_size: 8)
+[2026-01-17 20:40:07.085] [1716] [HailoRT] [info] [queue_elements.cpp:657] [create] Created (PullQEl_hw_read0emotion_model/fc33)
+[2026-01-17 20:40:07.085] [1716] [HailoRT] [info] [filter_elements.cpp:372] [create] Created (PostInferEl0emotion_model/fc33 | Quantization - src_type: UINT8, dst_type FLOAT32, limvals_min: -1.67608, limvals_max: 3.12617)
+[2026-01-17 20:40:07.085] [1716] [HailoRT] [info] [queue_elements.cpp:800] [create] Created (UserBuffQEl0emotion_model/fc33 | timeout: 10s)
+[2026-01-17 20:40:07.085] [1716] [HailoRT] [info] [vstream.cpp:1114] [OutputVStreamImpl] Creating emotion_model/fc33...
+[2026-01-17 20:40:07.085] [1716] [HailoRT] [info] [vstream_builder.cpp:220] [create_outputs] Output pipeline 'emotion_model/fc33': HW >> (HwReadEl0emotion_model/fc33 | hw_frame_size: 8) >> (PullQEl_hw_read0emotion_model/fc33) >> (PostInferEl0emotion_model/fc33 | Quantization - src_type: UINT8, dst_type FLOAT32, limvals_min: -1.67608, limvals_max: 3.12617) >> (UserBuffQEl0emotion_model/fc33 | timeout: 10s)
+[2026-01-17 20:40:07.085] [1716] [HailoRT] [info] [core_op.cpp:156] [activate] Activating emotion_model took 0.289742 milliseconds. Note that the function is asynchronous and thus the network is not fully activated yet.
+[2026-01-17 20:40:07.085] [1716] [HailoRT] [info] [core_op.cpp:156] [activate] Activating emotion_model took 0.309409 milliseconds. Note that the function is asynchronous and thus the network is not fully activated yet.
+[2026-01-17 20:41:10.726] [1730] [HailoRT] [info] [vdevice_native_stream.cpp:331] [read_impl] Failed read from stream HAILO_STREAM_NOT_ACTIVATED(72) (device: 0001:01:00.0)
+[2026-01-17 20:41:10.726] [1716] [HailoRT] [info] [core_op.cpp:186] [deactivate] Deactivating took 0.493559 ms
+[2026-01-17 20:41:10.726] [1716] [HailoRT] [info] [core_op.cpp:186] [deactivate] Deactivating took 0.523706 ms
+[2026-01-17 20:41:10.726] [1730] [HailoRT] [info] [queue_elements.cpp:734] [run_in_thread] Shutdown event was signaled in run_pull of queue element PullQEl_hw_read0emotion_model/fc33!
+[2026-01-17 20:41:10.726] [1731] [HailoRT] [info] [queue_elements.cpp:855] [run_in_thread] Shutdown event was signaled in dequeue of UserBuffQEl0emotion_model/fc33!
+[2026-01-17 20:41:10.726] [1730] [HailoRT] [info] [queue_elements.cpp:68] [operator()] Thread in element PullQEl_hw_read0emotion_model/fc33 is not running anymore, exiting..
+[2026-01-17 20:41:10.726] [1716] [HailoRT] [info] [queue_elements.cpp:46] [~BaseQueueElement] Queue element PullQEl_hw_read0emotion_model/fc33 has 0 frames in his Queue on destruction
+[2026-01-17 20:41:10.726] [1731] [HailoRT] [info] [queue_elements.cpp:68] [operator()] Thread in element UserBuffQEl0emotion_model/fc33 is not running anymore, exiting..
+[2026-01-17 20:41:10.726] [1716] [HailoRT] [info] [queue_elements.cpp:46] [~BaseQueueElement] Queue element UserBuffQEl0emotion_model/fc33 has 0 frames in his Queue on destruction
+[2026-01-17 20:42:14.967] [3321] [HailoRT] [info] [vdevice.cpp:535] [create] Creating vdevice with params: device_count: 1, scheduling_algorithm: NONE, multi_process_service: false
+[2026-01-17 20:42:14.980] [3321] [HailoRT] [info] [device.cpp:51] [Device] OS Version: Linux 6.12.62+rpt-rpi-2712 #1 SMP PREEMPT Debian 1:6.12.62-1+rpt1 (2025-12-18) aarch64
+[2026-01-17 20:42:14.980] [3321] [HailoRT] [info] [control.cpp:113] [control__parse_identify_results] firmware_version is: 4.23.0
+[2026-01-17 20:42:14.980] [3321] [HailoRT] [info] [vdevice.cpp:682] [create] VDevice Infos: 0001:01:00.0
+[2026-01-17 20:42:14.985] [3321] [HailoRT] [info] [buffer_requirements.cpp:198] [find_initial_desc_page_size] Using non-default initial_desc_page_size of 64, due to a small transfer size (8)
+[2026-01-17 20:42:14.985] [3321] [HailoRT] [info] [internal_buffer_manager.cpp:77] [print_execution_results] Planned internal buffer memory: CMA=0 CMA-Desc=524288 Pinned=316928. memory to edge layer usage factor is 0.6916201
+[2026-01-17 20:42:14.985] [3321] [HailoRT] [info] [internal_buffer_manager.cpp:86] [print_execution_results] Default Internal buffer planner executed successfully
+[2026-01-17 20:42:15.012] [3321] [HailoRT] [info] [device_internal.cpp:57] [configure] Configuring HEF took 31.586604 milliseconds
+[2026-01-17 20:42:15.012] [3321] [HailoRT] [info] [vdevice.cpp:780] [configure] Configuring HEF on VDevice took 31.838767 milliseconds
+[2026-01-17 20:42:15.048] [3321] [HailoRT] [info] [edge_elements.cpp:52] [create] Created (HwWriteEl0emotion_model/input_layer1 | hw_frame_size: 150528)
+[2026-01-17 20:42:15.048] [3321] [HailoRT] [info] [vstream.cpp:754] [InputVStreamImpl] Creating emotion_model/input_layer1...
+[2026-01-17 20:42:15.048] [3321] [HailoRT] [info] [vstream_builder.cpp:102] [create_inputs] Input pipeline 'emotion_model/input_layer1': (HwWriteEl0emotion_model/input_layer1 | hw_frame_size: 150528) >> HW
+[2026-01-17 20:42:15.048] [3321] [HailoRT] [info] [edge_elements.cpp:287] [create] Created (HwReadEl0emotion_model/fc33 | hw_frame_size: 8)
+[2026-01-17 20:42:15.048] [3321] [HailoRT] [info] [queue_elements.cpp:657] [create] Created (PullQEl_hw_read0emotion_model/fc33)
+[2026-01-17 20:42:15.048] [3321] [HailoRT] [info] [filter_elements.cpp:372] [create] Created (PostInferEl0emotion_model/fc33 | Quantization - src_type: UINT8, dst_type FLOAT32, limvals_min: -1.67608, limvals_max: 3.12617)
+[2026-01-17 20:42:15.048] [3321] [HailoRT] [info] [queue_elements.cpp:800] [create] Created (UserBuffQEl0emotion_model/fc33 | timeout: 10s)
+[2026-01-17 20:42:15.048] [3321] [HailoRT] [info] [vstream.cpp:1114] [OutputVStreamImpl] Creating emotion_model/fc33...
+[2026-01-17 20:42:15.048] [3321] [HailoRT] [info] [vstream_builder.cpp:220] [create_outputs] Output pipeline 'emotion_model/fc33': HW >> (HwReadEl0emotion_model/fc33 | hw_frame_size: 8) >> (PullQEl_hw_read0emotion_model/fc33) >> (PostInferEl0emotion_model/fc33 | Quantization - src_type: UINT8, dst_type FLOAT32, limvals_min: -1.67608, limvals_max: 3.12617) >> (UserBuffQEl0emotion_model/fc33 | timeout: 10s)
+[2026-01-17 20:42:15.048] [3321] [HailoRT] [info] [core_op.cpp:156] [activate] Activating emotion_model took 0.226793 milliseconds. Note that the function is asynchronous and thus the network is not fully activated yet.
+[2026-01-17 20:42:15.048] [3321] [HailoRT] [info] [core_op.cpp:156] [activate] Activating emotion_model took 0.235127 milliseconds. Note that the function is asynchronous and thus the network is not fully activated yet.
+[2026-01-17 20:44:30.051] [3335] [HailoRT] [info] [vdevice_native_stream.cpp:331] [read_impl] Failed read from stream HAILO_STREAM_NOT_ACTIVATED(72) (device: 0001:01:00.0)
+[2026-01-17 20:44:30.051] [3321] [HailoRT] [info] [core_op.cpp:186] [deactivate] Deactivating took 0.536336 ms
+[2026-01-17 20:44:30.051] [3321] [HailoRT] [info] [core_op.cpp:186] [deactivate] Deactivating took 0.57054 ms
+[2026-01-17 20:44:30.051] [3336] [HailoRT] [info] [queue_elements.cpp:855] [run_in_thread] Shutdown event was signaled in dequeue of UserBuffQEl0emotion_model/fc33!
+[2026-01-17 20:44:30.051] [3335] [HailoRT] [info] [queue_elements.cpp:734] [run_in_thread] Shutdown event was signaled in run_pull of queue element PullQEl_hw_read0emotion_model/fc33!
+[2026-01-17 20:44:30.051] [3335] [HailoRT] [info] [queue_elements.cpp:68] [operator()] Thread in element PullQEl_hw_read0emotion_model/fc33 is not running anymore, exiting..
+[2026-01-17 20:44:30.052] [3321] [HailoRT] [info] [queue_elements.cpp:46] [~BaseQueueElement] Queue element PullQEl_hw_read0emotion_model/fc33 has 0 frames in his Queue on destruction
+[2026-01-17 20:44:30.052] [3336] [HailoRT] [info] [queue_elements.cpp:68] [operator()] Thread in element UserBuffQEl0emotion_model/fc33 is not running anymore, exiting..
+[2026-01-17 20:44:30.052] [3321] [HailoRT] [info] [queue_elements.cpp:46] [~BaseQueueElement] Queue element UserBuffQEl0emotion_model/fc33 has 0 frames in his Queue on destruction
+[2026-01-17 20:45:20.878] [7487] [HailoRT] [info] [vdevice.cpp:535] [create] Creating vdevice with params: device_count: 1, scheduling_algorithm: NONE, multi_process_service: false
+[2026-01-17 20:45:20.890] [7487] [HailoRT] [info] [device.cpp:51] [Device] OS Version: Linux 6.12.62+rpt-rpi-2712 #1 SMP PREEMPT Debian 1:6.12.62-1+rpt1 (2025-12-18) aarch64
+[2026-01-17 20:45:20.891] [7487] [HailoRT] [info] [control.cpp:113] [control__parse_identify_results] firmware_version is: 4.23.0
+[2026-01-17 20:45:20.891] [7487] [HailoRT] [info] [vdevice.cpp:682] [create] VDevice Infos: 0001:01:00.0
+[2026-01-17 20:45:20.896] [7487] [HailoRT] [info] [buffer_requirements.cpp:198] [find_initial_desc_page_size] Using non-default initial_desc_page_size of 64, due to a small transfer size (8)
+[2026-01-17 20:45:20.896] [7487] [HailoRT] [info] [internal_buffer_manager.cpp:77] [print_execution_results] Planned internal buffer memory: CMA=0 CMA-Desc=524288 Pinned=316928. memory to edge layer usage factor is 0.6916201
+[2026-01-17 20:45:20.896] [7487] [HailoRT] [info] [internal_buffer_manager.cpp:86] [print_execution_results] Default Internal buffer planner executed successfully
+[2026-01-17 20:45:20.922] [7487] [HailoRT] [info] [device_internal.cpp:57] [configure] Configuring HEF took 30.816773 milliseconds
+[2026-01-17 20:45:20.922] [7487] [HailoRT] [info] [vdevice.cpp:780] [configure] Configuring HEF on VDevice took 31.070607 milliseconds
+[2026-01-17 20:45:20.959] [7487] [HailoRT] [info] [edge_elements.cpp:52] [create] Created (HwWriteEl0emotion_model/input_layer1 | hw_frame_size: 150528)
+[2026-01-17 20:45:20.959] [7487] [HailoRT] [info] [vstream.cpp:754] [InputVStreamImpl] Creating emotion_model/input_layer1...
+[2026-01-17 20:45:20.959] [7487] [HailoRT] [info] [vstream_builder.cpp:102] [create_inputs] Input pipeline 'emotion_model/input_layer1': (HwWriteEl0emotion_model/input_layer1 | hw_frame_size: 150528) >> HW
+[2026-01-17 20:45:20.959] [7487] [HailoRT] [info] [edge_elements.cpp:287] [create] Created (HwReadEl0emotion_model/fc33 | hw_frame_size: 8)
+[2026-01-17 20:45:20.959] [7487] [HailoRT] [info] [queue_elements.cpp:657] [create] Created (PullQEl_hw_read0emotion_model/fc33)
+[2026-01-17 20:45:20.959] [7487] [HailoRT] [info] [filter_elements.cpp:372] [create] Created (PostInferEl0emotion_model/fc33 | Quantization - src_type: UINT8, dst_type FLOAT32, limvals_min: -1.67608, limvals_max: 3.12617)
+[2026-01-17 20:45:20.959] [7487] [HailoRT] [info] [queue_elements.cpp:800] [create] Created (UserBuffQEl0emotion_model/fc33 | timeout: 10s)
+[2026-01-17 20:45:20.959] [7487] [HailoRT] [info] [vstream.cpp:1114] [OutputVStreamImpl] Creating emotion_model/fc33...
+[2026-01-17 20:45:20.960] [7487] [HailoRT] [info] [vstream_builder.cpp:220] [create_outputs] Output pipeline 'emotion_model/fc33': HW >> (HwReadEl0emotion_model/fc33 | hw_frame_size: 8) >> (PullQEl_hw_read0emotion_model/fc33) >> (PostInferEl0emotion_model/fc33 | Quantization - src_type: UINT8, dst_type FLOAT32, limvals_min: -1.67608, limvals_max: 3.12617) >> (UserBuffQEl0emotion_model/fc33 | timeout: 10s)
+[2026-01-17 20:45:20.960] [7487] [HailoRT] [info] [core_op.cpp:156] [activate] Activating emotion_model took 0.204167 milliseconds. Note that the function is asynchronous and thus the network is not fully activated yet.
+[2026-01-17 20:45:20.960] [7487] [HailoRT] [info] [core_op.cpp:156] [activate] Activating emotion_model took 0.212945 milliseconds. Note that the function is asynchronous and thus the network is not fully activated yet.
+[2026-01-17 20:45:54.861] [7501] [HailoRT] [info] [vdevice_native_stream.cpp:331] [read_impl] Failed read from stream HAILO_STREAM_NOT_ACTIVATED(72) (device: 0001:01:00.0)
+[2026-01-17 20:45:54.861] [7487] [HailoRT] [info] [core_op.cpp:186] [deactivate] Deactivating took 0.531778 ms
+[2026-01-17 20:45:54.861] [7487] [HailoRT] [info] [core_op.cpp:186] [deactivate] Deactivating took 0.565962 ms
+[2026-01-17 20:45:54.861] [7502] [HailoRT] [info] [queue_elements.cpp:855] [run_in_thread] Shutdown event was signaled in dequeue of UserBuffQEl0emotion_model/fc33!
+[2026-01-17 20:45:54.862] [7501] [HailoRT] [info] [queue_elements.cpp:734] [run_in_thread] Shutdown event was signaled in run_pull of queue element PullQEl_hw_read0emotion_model/fc33!
+[2026-01-17 20:45:54.862] [7501] [HailoRT] [info] [queue_elements.cpp:68] [operator()] Thread in element PullQEl_hw_read0emotion_model/fc33 is not running anymore, exiting..
+[2026-01-17 20:45:54.862] [7487] [HailoRT] [info] [queue_elements.cpp:46] [~BaseQueueElement] Queue element PullQEl_hw_read0emotion_model/fc33 has 0 frames in his Queue on destruction
+[2026-01-17 20:45:54.862] [7502] [HailoRT] [info] [queue_elements.cpp:68] [operator()] Thread in element UserBuffQEl0emotion_model/fc33 is not running anymore, exiting..
+[2026-01-17 20:45:54.862] [7487] [HailoRT] [info] [queue_elements.cpp:46] [~BaseQueueElement] Queue element UserBuffQEl0emotion_model/fc33 has 0 frames in his Queue on destruction
+[2026-01-17 20:46:59.287] [8502] [HailoRT] [info] [vdevice.cpp:535] [create] Creating vdevice with params: device_count: 1, scheduling_algorithm: NONE, multi_process_service: false
+[2026-01-17 20:46:59.299] [8502] [HailoRT] [info] [device.cpp:51] [Device] OS Version: Linux 6.12.62+rpt-rpi-2712 #1 SMP PREEMPT Debian 1:6.12.62-1+rpt1 (2025-12-18) aarch64
+[2026-01-17 20:46:59.299] [8502] [HailoRT] [info] [control.cpp:113] [control__parse_identify_results] firmware_version is: 4.23.0
+[2026-01-17 20:46:59.299] [8502] [HailoRT] [info] [vdevice.cpp:682] [create] VDevice Infos: 0001:01:00.0
+[2026-01-17 20:46:59.304] [8502] [HailoRT] [info] [buffer_requirements.cpp:198] [find_initial_desc_page_size] Using non-default initial_desc_page_size of 64, due to a small transfer size (8)
+[2026-01-17 20:46:59.304] [8502] [HailoRT] [info] [buffer_requirements.cpp:198] [find_initial_desc_page_size] Using non-default initial_desc_page_size of 256, due to a small transfer size (144)
+[2026-01-17 20:46:59.305] [8502] [HailoRT] [info] [internal_buffer_manager.cpp:77] [print_execution_results] Planned internal buffer memory: CMA=0 CMA-Desc=458752 Pinned=623104. memory to edge layer usage factor is 0.8994826
+[2026-01-17 20:46:59.305] [8502] [HailoRT] [info] [internal_buffer_manager.cpp:86] [print_execution_results] Default Internal buffer planner executed successfully
+[2026-01-17 20:46:59.325] [8502] [HailoRT] [info] [device_internal.cpp:57] [configure] Configuring HEF took 25.212575 milliseconds
+[2026-01-17 20:46:59.325] [8502] [HailoRT] [info] [vdevice.cpp:780] [configure] Configuring HEF on VDevice took 25.476371 milliseconds
+[2026-01-17 20:46:59.359] [8502] [HailoRT] [info] [edge_elements.cpp:52] [create] Created (HwWriteEl3emotion_model/input_layer1 | hw_frame_size: 150528)
+[2026-01-17 20:46:59.359] [8502] [HailoRT] [info] [vstream.cpp:754] [InputVStreamImpl] Creating emotion_model/input_layer1...
+[2026-01-17 20:46:59.359] [8502] [HailoRT] [info] [vstream_builder.cpp:102] [create_inputs] Input pipeline 'emotion_model/input_layer1': (HwWriteEl3emotion_model/input_layer1 | hw_frame_size: 150528) >> HW
+[2026-01-17 20:46:59.359] [8502] [HailoRT] [info] [edge_elements.cpp:287] [create] Created (HwReadEl0emotion_model/fc33 | hw_frame_size: 8)
+[2026-01-17 20:46:59.359] [8502] [HailoRT] [info] [queue_elements.cpp:657] [create] Created (PullQEl_hw_read0emotion_model/fc33)
+[2026-01-17 20:46:59.359] [8502] [HailoRT] [info] [filter_elements.cpp:372] [create] Created (PostInferEl0emotion_model/fc33 | Quantization - src_type: UINT8, dst_type FLOAT32, limvals_min: -1.67608, limvals_max: 3.12617)
+[2026-01-17 20:46:59.359] [8502] [HailoRT] [info] [queue_elements.cpp:800] [create] Created (UserBuffQEl0emotion_model/fc33 | timeout: 10s)
+[2026-01-17 20:46:59.359] [8502] [HailoRT] [info] [vstream.cpp:1114] [OutputVStreamImpl] Creating emotion_model/fc33...
+[2026-01-17 20:46:59.359] [8502] [HailoRT] [info] [vstream_builder.cpp:220] [create_outputs] Output pipeline 'emotion_model/fc33': HW >> (HwReadEl0emotion_model/fc33 | hw_frame_size: 8) >> (PullQEl_hw_read0emotion_model/fc33) >> (PostInferEl0emotion_model/fc33 | Quantization - src_type: UINT8, dst_type FLOAT32, limvals_min: -1.67608, limvals_max: 3.12617) >> (UserBuffQEl0emotion_model/fc33 | timeout: 10s)
+[2026-01-17 20:46:59.360] [8502] [HailoRT] [info] [core_op.cpp:156] [activate] Activating emotion_model took 0.235203 milliseconds. Note that the function is asynchronous and thus the network is not fully activated yet.
+[2026-01-17 20:46:59.360] [8502] [HailoRT] [info] [core_op.cpp:156] [activate] Activating emotion_model took 0.243426 milliseconds. Note that the function is asynchronous and thus the network is not fully activated yet.
+[2026-01-17 20:47:49.671] [8516] [HailoRT] [info] [vdevice_native_stream.cpp:331] [read_impl] Failed read from stream HAILO_STREAM_NOT_ACTIVATED(72) (device: 0001:01:00.0)
+[2026-01-17 20:47:49.672] [8502] [HailoRT] [info] [core_op.cpp:186] [deactivate] Deactivating took 0.631295 ms
+[2026-01-17 20:47:49.672] [8502] [HailoRT] [info] [core_op.cpp:186] [deactivate] Deactivating took 0.665165 ms
+[2026-01-17 20:47:49.672] [8517] [HailoRT] [info] [queue_elements.cpp:855] [run_in_thread] Shutdown event was signaled in dequeue of UserBuffQEl0emotion_model/fc33!
+[2026-01-17 20:47:49.672] [8516] [HailoRT] [info] [queue_elements.cpp:734] [run_in_thread] Shutdown event was signaled in run_pull of queue element PullQEl_hw_read0emotion_model/fc33!
+[2026-01-17 20:47:49.672] [8502] [HailoRT] [info] [queue_elements.cpp:46] [~BaseQueueElement] Queue element PullQEl_hw_read0emotion_model/fc33 has 0 frames in his Queue on destruction
+[2026-01-17 20:47:49.672] [8517] [HailoRT] [info] [queue_elements.cpp:68] [operator()] Thread in element UserBuffQEl0emotion_model/fc33 is not running anymore, exiting..
+[2026-01-17 20:47:49.672] [8502] [HailoRT] [info] [queue_elements.cpp:46] [~BaseQueueElement] Queue element UserBuffQEl0emotion_model/fc33 has 0 frames in his Queue on destruction
+[2026-01-17 20:48:07.814] [9960] [HailoRT] [info] [vdevice.cpp:535] [create] Creating vdevice with params: device_count: 1, scheduling_algorithm: NONE, multi_process_service: false
+[2026-01-17 20:48:07.827] [9960] [HailoRT] [info] [device.cpp:51] [Device] OS Version: Linux 6.12.62+rpt-rpi-2712 #1 SMP PREEMPT Debian 1:6.12.62-1+rpt1 (2025-12-18) aarch64
+[2026-01-17 20:48:07.827] [9960] [HailoRT] [info] [control.cpp:113] [control__parse_identify_results] firmware_version is: 4.23.0
+[2026-01-17 20:48:07.827] [9960] [HailoRT] [info] [vdevice.cpp:682] [create] VDevice Infos: 0001:01:00.0
+[2026-01-17 20:48:07.832] [9960] [HailoRT] [info] [buffer_requirements.cpp:198] [find_initial_desc_page_size] Using non-default initial_desc_page_size of 64, due to a small transfer size (8)
+[2026-01-17 20:48:07.833] [9960] [HailoRT] [info] [internal_buffer_manager.cpp:77] [print_execution_results] Planned internal buffer memory: CMA=0 CMA-Desc=524288 Pinned=316928. memory to edge layer usage factor is 0.6916201
+[2026-01-17 20:48:07.833] [9960] [HailoRT] [info] [internal_buffer_manager.cpp:86] [print_execution_results] Default Internal buffer planner executed successfully
+[2026-01-17 20:48:07.861] [9960] [HailoRT] [info] [device_internal.cpp:57] [configure] Configuring HEF took 33.917371 milliseconds
+[2026-01-17 20:48:07.861] [9960] [HailoRT] [info] [vdevice.cpp:780] [configure] Configuring HEF on VDevice took 34.177129 milliseconds
+[2026-01-17 20:48:07.901] [9960] [HailoRT] [info] [edge_elements.cpp:52] [create] Created (HwWriteEl0emotion_model/input_layer1 | hw_frame_size: 150528)
+[2026-01-17 20:48:07.901] [9960] [HailoRT] [info] [vstream.cpp:754] [InputVStreamImpl] Creating emotion_model/input_layer1...
+[2026-01-17 20:48:07.901] [9960] [HailoRT] [info] [vstream_builder.cpp:102] [create_inputs] Input pipeline 'emotion_model/input_layer1': (HwWriteEl0emotion_model/input_layer1 | hw_frame_size: 150528) >> HW
+[2026-01-17 20:48:07.901] [9960] [HailoRT] [info] [edge_elements.cpp:287] [create] Created (HwReadEl0emotion_model/fc33 | hw_frame_size: 8)
+[2026-01-17 20:48:07.901] [9960] [HailoRT] [info] [queue_elements.cpp:657] [create] Created (PullQEl_hw_read0emotion_model/fc33)
+[2026-01-17 20:48:07.901] [9960] [HailoRT] [info] [filter_elements.cpp:372] [create] Created (PostInferEl0emotion_model/fc33 | Quantization - src_type: UINT8, dst_type FLOAT32, limvals_min: -1.67608, limvals_max: 3.12617)
+[2026-01-17 20:48:07.901] [9960] [HailoRT] [info] [queue_elements.cpp:800] [create] Created (UserBuffQEl0emotion_model/fc33 | timeout: 10s)
+[2026-01-17 20:48:07.901] [9960] [HailoRT] [info] [vstream.cpp:1114] [OutputVStreamImpl] Creating emotion_model/fc33...
+[2026-01-17 20:48:07.901] [9960] [HailoRT] [info] [vstream_builder.cpp:220] [create_outputs] Output pipeline 'emotion_model/fc33': HW >> (HwReadEl0emotion_model/fc33 | hw_frame_size: 8) >> (PullQEl_hw_read0emotion_model/fc33) >> (PostInferEl0emotion_model/fc33 | Quantization - src_type: UINT8, dst_type FLOAT32, limvals_min: -1.67608, limvals_max: 3.12617) >> (UserBuffQEl0emotion_model/fc33 | timeout: 10s)
+[2026-01-17 20:48:07.901] [9960] [HailoRT] [info] [core_op.cpp:156] [activate] Activating emotion_model took 0.246148 milliseconds. Note that the function is asynchronous and thus the network is not fully activated yet.
+[2026-01-17 20:48:07.901] [9960] [HailoRT] [info] [core_op.cpp:156] [activate] Activating emotion_model took 0.256611 milliseconds. Note that the function is asynchronous and thus the network is not fully activated yet.
+[2026-01-17 20:50:08.721] [9974] [HailoRT] [info] [vdevice_native_stream.cpp:331] [read_impl] Failed read from stream HAILO_STREAM_NOT_ACTIVATED(72) (device: 0001:01:00.0)
+[2026-01-17 20:50:08.721] [9960] [HailoRT] [info] [core_op.cpp:186] [deactivate] Deactivating took 0.628424 ms
+[2026-01-17 20:50:08.721] [9960] [HailoRT] [info] [core_op.cpp:186] [deactivate] Deactivating took 0.669979 ms
+[2026-01-17 20:50:08.722] [9974] [HailoRT] [info] [queue_elements.cpp:734] [run_in_thread] Shutdown event was signaled in run_pull of queue element PullQEl_hw_read0emotion_model/fc33!
+[2026-01-17 20:50:08.722] [9975] [HailoRT] [info] [queue_elements.cpp:855] [run_in_thread] Shutdown event was signaled in dequeue of UserBuffQEl0emotion_model/fc33!
+[2026-01-17 20:50:08.722] [9974] [HailoRT] [info] [queue_elements.cpp:68] [operator()] Thread in element PullQEl_hw_read0emotion_model/fc33 is not running anymore, exiting..
+[2026-01-17 20:50:08.722] [9960] [HailoRT] [info] [queue_elements.cpp:46] [~BaseQueueElement] Queue element PullQEl_hw_read0emotion_model/fc33 has 0 frames in his Queue on destruction
+[2026-01-17 20:50:08.722] [9975] [HailoRT] [info] [queue_elements.cpp:68] [operator()] Thread in element UserBuffQEl0emotion_model/fc33 is not running anymore, exiting..
+[2026-01-17 20:50:08.722] [9960] [HailoRT] [info] [queue_elements.cpp:46] [~BaseQueueElement] Queue element UserBuffQEl0emotion_model/fc33 has 0 frames in his Queue on destruction
+[2026-03-10 10:17:21.888] [1871] [HailoRT] [info] [vdevice.cpp:535] [create] Creating vdevice with params: device_count: 1, scheduling_algorithm: NONE, multi_process_service: false
+[2026-03-10 10:17:21.905] [1871] [HailoRT] [info] [device.cpp:51] [Device] OS Version: Linux 6.12.62+rpt-rpi-2712 #1 SMP PREEMPT Debian 1:6.12.62-1+rpt1 (2025-12-18) aarch64
+[2026-03-10 10:17:21.905] [1871] [HailoRT] [info] [control.cpp:113] [control__parse_identify_results] firmware_version is: 4.23.0
+[2026-03-10 10:17:21.905] [1871] [HailoRT] [info] [vdevice.cpp:682] [create] VDevice Infos: 0001:01:00.0
+[2026-03-10 10:17:21.918] [1871] [HailoRT] [info] [buffer_requirements.cpp:198] [find_initial_desc_page_size] Using non-default initial_desc_page_size of 64, due to a small transfer size (8)
+[2026-03-10 10:17:21.919] [1871] [HailoRT] [info] [internal_buffer_manager.cpp:77] [print_execution_results] Planned internal buffer memory: CMA=0 CMA-Desc=524288 Pinned=316928. memory to edge layer usage factor is 0.6916201
+[2026-03-10 10:17:21.919] [1871] [HailoRT] [info] [internal_buffer_manager.cpp:86] [print_execution_results] Default Internal buffer planner executed successfully
+[2026-03-10 10:17:21.945] [1871] [HailoRT] [info] [device_internal.cpp:57] [configure] Configuring HEF took 38.871106 milliseconds
+[2026-03-10 10:17:21.947] [1871] [HailoRT] [info] [vdevice.cpp:780] [configure] Configuring HEF on VDevice took 41.367544 milliseconds
+[2026-03-10 10:17:21.985] [1871] [HailoRT] [info] [edge_elements.cpp:52] [create] Created (HwWriteEl0emotion_model/input_layer1 | hw_frame_size: 150528)
+[2026-03-10 10:17:21.985] [1871] [HailoRT] [info] [vstream.cpp:754] [InputVStreamImpl] Creating emotion_model/input_layer1...
+[2026-03-10 10:17:21.985] [1871] [HailoRT] [info] [vstream_builder.cpp:102] [create_inputs] Input pipeline 'emotion_model/input_layer1': (HwWriteEl0emotion_model/input_layer1 | hw_frame_size: 150528) >> HW
+[2026-03-10 10:17:21.985] [1871] [HailoRT] [info] [edge_elements.cpp:287] [create] Created (HwReadEl0emotion_model/fc33 | hw_frame_size: 8)
+[2026-03-10 10:17:21.987] [1871] [HailoRT] [info] [queue_elements.cpp:657] [create] Created (PullQEl_hw_read0emotion_model/fc33)
+[2026-03-10 10:17:21.987] [1871] [HailoRT] [info] [filter_elements.cpp:372] [create] Created (PostInferEl0emotion_model/fc33 | Quantization - src_type: UINT8, dst_type FLOAT32, limvals_min: -1.67608, limvals_max: 3.12617)
+[2026-03-10 10:17:21.987] [1871] [HailoRT] [info] [queue_elements.cpp:800] [create] Created (UserBuffQEl0emotion_model/fc33 | timeout: 10s)
+[2026-03-10 10:17:21.987] [1871] [HailoRT] [info] [vstream.cpp:1114] [OutputVStreamImpl] Creating emotion_model/fc33...
+[2026-03-10 10:17:21.987] [1871] [HailoRT] [info] [vstream_builder.cpp:220] [create_outputs] Output pipeline 'emotion_model/fc33': HW >> (HwReadEl0emotion_model/fc33 | hw_frame_size: 8) >> (PullQEl_hw_read0emotion_model/fc33) >> (PostInferEl0emotion_model/fc33 | Quantization - src_type: UINT8, dst_type FLOAT32, limvals_min: -1.67608, limvals_max: 3.12617) >> (UserBuffQEl0emotion_model/fc33 | timeout: 10s)
+[2026-03-10 10:17:21.987] [1871] [HailoRT] [info] [core_op.cpp:156] [activate] Activating emotion_model took 0.212872 milliseconds. Note that the function is asynchronous and thus the network is not fully activated yet.
+[2026-03-10 10:17:21.987] [1871] [HailoRT] [info] [core_op.cpp:156] [activate] Activating emotion_model took 0.220445 milliseconds. Note that the function is asynchronous and thus the network is not fully activated yet.
+[2026-03-10 10:18:04.582] [1885] [HailoRT] [info] [vdevice_native_stream.cpp:331] [read_impl] Failed read from stream HAILO_STREAM_NOT_ACTIVATED(72) (device: 0001:01:00.0)
+[2026-03-10 10:18:04.582] [1871] [HailoRT] [info] [core_op.cpp:186] [deactivate] Deactivating took 0.426761 ms
+[2026-03-10 10:18:04.582] [1871] [HailoRT] [info] [core_op.cpp:186] [deactivate] Deactivating took 0.443224 ms
+[2026-03-10 10:18:04.582] [1886] [HailoRT] [info] [queue_elements.cpp:855] [run_in_thread] Shutdown event was signaled in dequeue of UserBuffQEl0emotion_model/fc33!
+[2026-03-10 10:18:04.582] [1885] [HailoRT] [info] [queue_elements.cpp:734] [run_in_thread] Shutdown event was signaled in run_pull of queue element PullQEl_hw_read0emotion_model/fc33!
+[2026-03-10 10:18:04.582] [1885] [HailoRT] [info] [queue_elements.cpp:68] [operator()] Thread in element PullQEl_hw_read0emotion_model/fc33 is not running anymore, exiting..
+[2026-03-10 10:18:04.582] [1871] [HailoRT] [info] [queue_elements.cpp:46] [~BaseQueueElement] Queue element PullQEl_hw_read0emotion_model/fc33 has 0 frames in his Queue on destruction
+[2026-03-10 10:18:04.582] [1886] [HailoRT] [info] [queue_elements.cpp:68] [operator()] Thread in element UserBuffQEl0emotion_model/fc33 is not running anymore, exiting..
+[2026-03-10 10:18:04.582] [1871] [HailoRT] [info] [queue_elements.cpp:46] [~BaseQueueElement] Queue element UserBuffQEl0emotion_model/fc33 has 0 frames in his Queue on destruction
+[2026-03-10 13:24:19.219] [3946] [HailoRT] [info] [vdevice.cpp:535] [create] Creating vdevice with params: device_count: 1, scheduling_algorithm: NONE, multi_process_service: false
+[2026-03-10 13:24:19.231] [3946] [HailoRT] [info] [device.cpp:51] [Device] OS Version: Linux 6.12.62+rpt-rpi-2712 #1 SMP PREEMPT Debian 1:6.12.62-1+rpt1 (2025-12-18) aarch64
+[2026-03-10 13:24:19.232] [3946] [HailoRT] [info] [control.cpp:113] [control__parse_identify_results] firmware_version is: 4.23.0
+[2026-03-10 13:24:19.232] [3946] [HailoRT] [info] [vdevice.cpp:682] [create] VDevice Infos: 0001:01:00.0
+[2026-03-10 13:24:19.237] [3946] [HailoRT] [info] [buffer_requirements.cpp:198] [find_initial_desc_page_size] Using non-default initial_desc_page_size of 64, due to a small transfer size (8)
+[2026-03-10 13:24:19.237] [3946] [HailoRT] [info] [internal_buffer_manager.cpp:77] [print_execution_results] Planned internal buffer memory: CMA=0 CMA-Desc=524288 Pinned=316928. memory to edge layer usage factor is 0.6916201
+[2026-03-10 13:24:19.237] [3946] [HailoRT] [info] [internal_buffer_manager.cpp:86] [print_execution_results] Default Internal buffer planner executed successfully
+[2026-03-10 13:24:19.266] [3946] [HailoRT] [info] [device_internal.cpp:57] [configure] Configuring HEF took 34.441814 milliseconds
+[2026-03-10 13:24:19.266] [3946] [HailoRT] [info] [vdevice.cpp:780] [configure] Configuring HEF on VDevice took 34.718502 milliseconds
+[2026-03-10 13:24:19.318] [3946] [HailoRT] [info] [edge_elements.cpp:52] [create] Created (HwWriteEl0emotion_model/input_layer1 | hw_frame_size: 150528)
+[2026-03-10 13:24:19.318] [3946] [HailoRT] [info] [vstream.cpp:754] [InputVStreamImpl] Creating emotion_model/input_layer1...
+[2026-03-10 13:24:19.318] [3946] [HailoRT] [info] [vstream_builder.cpp:102] [create_inputs] Input pipeline 'emotion_model/input_layer1': (HwWriteEl0emotion_model/input_layer1 | hw_frame_size: 150528) >> HW
+[2026-03-10 13:24:19.318] [3946] [HailoRT] [info] [edge_elements.cpp:287] [create] Created (HwReadEl0emotion_model/fc33 | hw_frame_size: 8)
+[2026-03-10 13:24:19.318] [3946] [HailoRT] [info] [queue_elements.cpp:657] [create] Created (PullQEl_hw_read0emotion_model/fc33)
+[2026-03-10 13:24:19.318] [3946] [HailoRT] [info] [filter_elements.cpp:372] [create] Created (PostInferEl0emotion_model/fc33 | Quantization - src_type: UINT8, dst_type FLOAT32, limvals_min: -1.67608, limvals_max: 3.12617)
+[2026-03-10 13:24:19.318] [3946] [HailoRT] [info] [queue_elements.cpp:800] [create] Created (UserBuffQEl0emotion_model/fc33 | timeout: 10s)
+[2026-03-10 13:24:19.318] [3946] [HailoRT] [info] [vstream.cpp:1114] [OutputVStreamImpl] Creating emotion_model/fc33...
+[2026-03-10 13:24:19.318] [3946] [HailoRT] [info] [vstream_builder.cpp:220] [create_outputs] Output pipeline 'emotion_model/fc33': HW >> (HwReadEl0emotion_model/fc33 | hw_frame_size: 8) >> (PullQEl_hw_read0emotion_model/fc33) >> (PostInferEl0emotion_model/fc33 | Quantization - src_type: UINT8, dst_type FLOAT32, limvals_min: -1.67608, limvals_max: 3.12617) >> (UserBuffQEl0emotion_model/fc33 | timeout: 10s)
+[2026-03-10 13:24:19.319] [3946] [HailoRT] [info] [core_op.cpp:156] [activate] Activating emotion_model took 0.302965 milliseconds. Note that the function is asynchronous and thus the network is not fully activated yet.
+[2026-03-10 13:24:19.319] [3946] [HailoRT] [info] [core_op.cpp:156] [activate] Activating emotion_model took 0.329058 milliseconds. Note that the function is asynchronous and thus the network is not fully activated yet.
+[2026-03-10 13:24:47.300] [3963] [HailoRT] [info] [vdevice_native_stream.cpp:331] [read_impl] Failed read from stream HAILO_STREAM_NOT_ACTIVATED(72) (device: 0001:01:00.0)
+[2026-03-10 13:24:47.301] [3946] [HailoRT] [info] [core_op.cpp:186] [deactivate] Deactivating took 0.579689 ms
+[2026-03-10 13:24:47.301] [3946] [HailoRT] [info] [core_op.cpp:186] [deactivate] Deactivating took 0.615486 ms
+[2026-03-10 13:24:47.301] [3964] [HailoRT] [info] [queue_elements.cpp:855] [run_in_thread] Shutdown event was signaled in dequeue of UserBuffQEl0emotion_model/fc33!
+[2026-03-10 13:24:47.301] [3963] [HailoRT] [info] [queue_elements.cpp:734] [run_in_thread] Shutdown event was signaled in run_pull of queue element PullQEl_hw_read0emotion_model/fc33!
+[2026-03-10 13:24:47.301] [3963] [HailoRT] [info] [queue_elements.cpp:68] [operator()] Thread in element PullQEl_hw_read0emotion_model/fc33 is not running anymore, exiting..
+[2026-03-10 13:24:47.301] [3946] [HailoRT] [info] [queue_elements.cpp:46] [~BaseQueueElement] Queue element PullQEl_hw_read0emotion_model/fc33 has 0 frames in his Queue on destruction
+[2026-03-10 13:24:47.301] [3964] [HailoRT] [info] [queue_elements.cpp:68] [operator()] Thread in element UserBuffQEl0emotion_model/fc33 is not running anymore, exiting..
+[2026-03-10 13:24:47.301] [3946] [HailoRT] [info] [queue_elements.cpp:46] [~BaseQueueElement] Queue element UserBuffQEl0emotion_model/fc33 has 0 frames in his Queue on destruction
+[2026-03-10 13:25:04.568] [4770] [HailoRT] [info] [vdevice.cpp:535] [create] Creating vdevice with params: device_count: 1, scheduling_algorithm: NONE, multi_process_service: false
+[2026-03-10 13:25:04.580] [4770] [HailoRT] [info] [device.cpp:51] [Device] OS Version: Linux 6.12.62+rpt-rpi-2712 #1 SMP PREEMPT Debian 1:6.12.62-1+rpt1 (2025-12-18) aarch64
+[2026-03-10 13:25:04.580] [4770] [HailoRT] [info] [control.cpp:113] [control__parse_identify_results] firmware_version is: 4.23.0
+[2026-03-10 13:25:04.580] [4770] [HailoRT] [info] [vdevice.cpp:682] [create] VDevice Infos: 0001:01:00.0
+[2026-03-10 13:25:04.586] [4770] [HailoRT] [info] [buffer_requirements.cpp:198] [find_initial_desc_page_size] Using non-default initial_desc_page_size of 64, due to a small transfer size (8)
+[2026-03-10 13:25:04.586] [4770] [HailoRT] [info] [internal_buffer_manager.cpp:77] [print_execution_results] Planned internal buffer memory: CMA=0 CMA-Desc=524288 Pinned=316928. memory to edge layer usage factor is 0.6916201
+[2026-03-10 13:25:04.586] [4770] [HailoRT] [info] [internal_buffer_manager.cpp:86] [print_execution_results] Default Internal buffer planner executed successfully
+[2026-03-10 13:25:04.611] [4770] [HailoRT] [info] [device_internal.cpp:57] [configure] Configuring HEF took 30.61636 milliseconds
+[2026-03-10 13:25:04.611] [4770] [HailoRT] [info] [vdevice.cpp:780] [configure] Configuring HEF on VDevice took 30.876307 milliseconds
+[2026-03-10 13:25:04.657] [4770] [HailoRT] [info] [edge_elements.cpp:52] [create] Created (HwWriteEl0emotion_model/input_layer1 | hw_frame_size: 150528)
+[2026-03-10 13:25:04.657] [4770] [HailoRT] [info] [vstream.cpp:754] [InputVStreamImpl] Creating emotion_model/input_layer1...
+[2026-03-10 13:25:04.657] [4770] [HailoRT] [info] [vstream_builder.cpp:102] [create_inputs] Input pipeline 'emotion_model/input_layer1': (HwWriteEl0emotion_model/input_layer1 | hw_frame_size: 150528) >> HW
+[2026-03-10 13:25:04.657] [4770] [HailoRT] [info] [edge_elements.cpp:287] [create] Created (HwReadEl0emotion_model/fc33 | hw_frame_size: 8)
+[2026-03-10 13:25:04.658] [4770] [HailoRT] [info] [queue_elements.cpp:657] [create] Created (PullQEl_hw_read0emotion_model/fc33)
+[2026-03-10 13:25:04.658] [4770] [HailoRT] [info] [filter_elements.cpp:372] [create] Created (PostInferEl0emotion_model/fc33 | Quantization - src_type: UINT8, dst_type FLOAT32, limvals_min: -1.67608, limvals_max: 3.12617)
+[2026-03-10 13:25:04.658] [4770] [HailoRT] [info] [queue_elements.cpp:800] [create] Created (UserBuffQEl0emotion_model/fc33 | timeout: 10s)
+[2026-03-10 13:25:04.658] [4770] [HailoRT] [info] [vstream.cpp:1114] [OutputVStreamImpl] Creating emotion_model/fc33...
+[2026-03-10 13:25:04.658] [4770] [HailoRT] [info] [vstream_builder.cpp:220] [create_outputs] Output pipeline 'emotion_model/fc33': HW >> (HwReadEl0emotion_model/fc33 | hw_frame_size: 8) >> (PullQEl_hw_read0emotion_model/fc33) >> (PostInferEl0emotion_model/fc33 | Quantization - src_type: UINT8, dst_type FLOAT32, limvals_min: -1.67608, limvals_max: 3.12617) >> (UserBuffQEl0emotion_model/fc33 | timeout: 10s)
+[2026-03-10 13:25:04.658] [4770] [HailoRT] [info] [core_op.cpp:156] [activate] Activating emotion_model took 0.219854 milliseconds. Note that the function is asynchronous and thus the network is not fully activated yet.
+[2026-03-10 13:25:04.658] [4770] [HailoRT] [info] [core_op.cpp:156] [activate] Activating emotion_model took 0.23165 milliseconds. Note that the function is asynchronous and thus the network is not fully activated yet.
+[2026-03-10 13:25:25.437] [4789] [HailoRT] [info] [vdevice_native_stream.cpp:331] [read_impl] Failed read from stream HAILO_STREAM_NOT_ACTIVATED(72) (device: 0001:01:00.0)
+[2026-03-10 13:25:25.437] [4770] [HailoRT] [info] [core_op.cpp:186] [deactivate] Deactivating took 0.52256 ms
+[2026-03-10 13:25:25.437] [4770] [HailoRT] [info] [core_op.cpp:186] [deactivate] Deactivating took 0.59093 ms
+[2026-03-10 13:25:25.437] [4790] [HailoRT] [info] [queue_elements.cpp:855] [run_in_thread] Shutdown event was signaled in dequeue of UserBuffQEl0emotion_model/fc33!
+[2026-03-10 13:25:25.437] [4789] [HailoRT] [info] [queue_elements.cpp:734] [run_in_thread] Shutdown event was signaled in run_pull of queue element PullQEl_hw_read0emotion_model/fc33!
+[2026-03-10 13:25:25.437] [4789] [HailoRT] [info] [queue_elements.cpp:68] [operator()] Thread in element PullQEl_hw_read0emotion_model/fc33 is not running anymore, exiting..
+[2026-03-10 13:25:25.437] [4770] [HailoRT] [info] [queue_elements.cpp:46] [~BaseQueueElement] Queue element PullQEl_hw_read0emotion_model/fc33 has 0 frames in his Queue on destruction
+[2026-03-10 13:25:25.437] [4790] [HailoRT] [info] [queue_elements.cpp:68] [operator()] Thread in element UserBuffQEl0emotion_model/fc33 is not running anymore, exiting..
+[2026-03-10 13:25:25.437] [4770] [HailoRT] [info] [queue_elements.cpp:46] [~BaseQueueElement] Queue element UserBuffQEl0emotion_model/fc33 has 0 frames in his Queue on destruction
+[2026-03-10 13:33:37.998] [5464] [HailoRT] [info] [vdevice.cpp:535] [create] Creating vdevice with params: device_count: 1, scheduling_algorithm: NONE, multi_process_service: false
+[2026-03-10 13:33:38.009] [5464] [HailoRT] [info] [device.cpp:51] [Device] OS Version: Linux 6.12.62+rpt-rpi-2712 #1 SMP PREEMPT Debian 1:6.12.62-1+rpt1 (2025-12-18) aarch64
+[2026-03-10 13:33:38.009] [5464] [HailoRT] [info] [control.cpp:113] [control__parse_identify_results] firmware_version is: 4.23.0
+[2026-03-10 13:33:38.009] [5464] [HailoRT] [info] [vdevice.cpp:682] [create] VDevice Infos: 0001:01:00.0
+[2026-03-10 13:33:38.014] [5464] [HailoRT] [info] [buffer_requirements.cpp:198] [find_initial_desc_page_size] Using non-default initial_desc_page_size of 64, due to a small transfer size (8)
+[2026-03-10 13:33:38.014] [5464] [HailoRT] [info] [internal_buffer_manager.cpp:77] [print_execution_results] Planned internal buffer memory: CMA=0 CMA-Desc=524288 Pinned=316928. memory to edge layer usage factor is 0.6916201
+[2026-03-10 13:33:38.014] [5464] [HailoRT] [info] [internal_buffer_manager.cpp:86] [print_execution_results] Default Internal buffer planner executed successfully
+[2026-03-10 13:33:38.041] [5464] [HailoRT] [info] [device_internal.cpp:57] [configure] Configuring HEF took 31.576579 milliseconds
+[2026-03-10 13:33:38.041] [5464] [HailoRT] [info] [vdevice.cpp:780] [configure] Configuring HEF on VDevice took 31.835138 milliseconds
+[2026-03-10 13:33:38.085] [5464] [HailoRT] [info] [edge_elements.cpp:52] [create] Created (HwWriteEl0emotion_model/input_layer1 | hw_frame_size: 150528)
+[2026-03-10 13:33:38.085] [5464] [HailoRT] [info] [vstream.cpp:754] [InputVStreamImpl] Creating emotion_model/input_layer1...
+[2026-03-10 13:33:38.086] [5464] [HailoRT] [info] [vstream_builder.cpp:102] [create_inputs] Input pipeline 'emotion_model/input_layer1': (HwWriteEl0emotion_model/input_layer1 | hw_frame_size: 150528) >> HW
+[2026-03-10 13:33:38.086] [5464] [HailoRT] [info] [edge_elements.cpp:287] [create] Created (HwReadEl0emotion_model/fc33 | hw_frame_size: 8)
+[2026-03-10 13:33:38.086] [5464] [HailoRT] [info] [queue_elements.cpp:657] [create] Created (PullQEl_hw_read0emotion_model/fc33)
+[2026-03-10 13:33:38.086] [5464] [HailoRT] [info] [filter_elements.cpp:372] [create] Created (PostInferEl0emotion_model/fc33 | Quantization - src_type: UINT8, dst_type FLOAT32, limvals_min: -1.67608, limvals_max: 3.12617)
+[2026-03-10 13:33:38.086] [5464] [HailoRT] [info] [queue_elements.cpp:800] [create] Created (UserBuffQEl0emotion_model/fc33 | timeout: 10s)
+[2026-03-10 13:33:38.086] [5464] [HailoRT] [info] [vstream.cpp:1114] [OutputVStreamImpl] Creating emotion_model/fc33...
+[2026-03-10 13:33:38.086] [5464] [HailoRT] [info] [vstream_builder.cpp:220] [create_outputs] Output pipeline 'emotion_model/fc33': HW >> (HwReadEl0emotion_model/fc33 | hw_frame_size: 8) >> (PullQEl_hw_read0emotion_model/fc33) >> (PostInferEl0emotion_model/fc33 | Quantization - src_type: UINT8, dst_type FLOAT32, limvals_min: -1.67608, limvals_max: 3.12617) >> (UserBuffQEl0emotion_model/fc33 | timeout: 10s)
+[2026-03-10 13:33:38.086] [5464] [HailoRT] [info] [core_op.cpp:156] [activate] Activating emotion_model took 0.204669 milliseconds. Note that the function is asynchronous and thus the network is not fully activated yet.
+[2026-03-10 13:33:38.086] [5464] [HailoRT] [info] [core_op.cpp:156] [activate] Activating emotion_model took 0.213113 milliseconds. Note that the function is asynchronous and thus the network is not fully activated yet.
+[2026-03-10 13:34:18.853] [5483] [HailoRT] [info] [vdevice_native_stream.cpp:331] [read_impl] Failed read from stream HAILO_STREAM_NOT_ACTIVATED(72) (device: 0001:01:00.0)
+[2026-03-10 13:34:18.854] [5464] [HailoRT] [info] [core_op.cpp:186] [deactivate] Deactivating took 0.56034 ms
+[2026-03-10 13:34:18.854] [5464] [HailoRT] [info] [core_op.cpp:186] [deactivate] Deactivating took 0.605636 ms
+[2026-03-10 13:34:18.854] [5483] [HailoRT] [info] [queue_elements.cpp:734] [run_in_thread] Shutdown event was signaled in run_pull of queue element PullQEl_hw_read0emotion_model/fc33!
+[2026-03-10 13:34:18.854] [5484] [HailoRT] [info] [queue_elements.cpp:855] [run_in_thread] Shutdown event was signaled in dequeue of UserBuffQEl0emotion_model/fc33!
+[2026-03-10 13:34:18.854] [5483] [HailoRT] [info] [queue_elements.cpp:68] [operator()] Thread in element PullQEl_hw_read0emotion_model/fc33 is not running anymore, exiting..
+[2026-03-10 13:34:18.854] [5464] [HailoRT] [info] [queue_elements.cpp:46] [~BaseQueueElement] Queue element PullQEl_hw_read0emotion_model/fc33 has 0 frames in his Queue on destruction
+[2026-03-10 13:34:18.854] [5484] [HailoRT] [info] [queue_elements.cpp:68] [operator()] Thread in element UserBuffQEl0emotion_model/fc33 is not running anymore, exiting..
+[2026-03-10 13:34:18.854] [5464] [HailoRT] [info] [queue_elements.cpp:46] [~BaseQueueElement] Queue element UserBuffQEl0emotion_model/fc33 has 0 frames in his Queue on destruction

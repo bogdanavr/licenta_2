@@ -1,0 +1,26 @@
+{
+  "checkpoint_path": "/home/bogdan_avr/licenta2/proiect_efficientnetv2s/export/best_model.pth",
+  "onnx_path": "/home/bogdan_avr/licenta2/proiect_efficientnetv2s/export/emotion_model.onnx",
+  "model_name": "efficientnet_b0",
+  "model_display_name": "EfficientNet-B0",
+  "best_epoch": 8,
+  "labels": [
+    "happy",
+    "neutral",
+    "sad",
+    "surprise"
+  ],
+  "img_size": 224,
+  "image_mean": [
+    0.485,
+    0.456,
+    0.406
+  ],
+  "image_std": [
+    0.229,
+    0.224,
+    0.225
+  ],
+  "opset": 13,
+  "dynamic_batch": false
+}

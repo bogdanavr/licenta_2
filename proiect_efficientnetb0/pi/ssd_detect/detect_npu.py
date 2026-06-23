@@ -1,10 +1,8 @@
 import cv2
 import numpy as np
 import time
-import threading
 from picamera2 import Picamera2
 from emotions_utils import EmotionSystem
-from test_buzzer import buzz_for_emotion
 
 from hailo_platform import (
     HEF,
@@ -52,7 +50,7 @@ def preprocess_npu(face_img_bgr):
 
 
 def detect_faces_ssd(net, frame_bgr):
-    """    
+    """
     Returns list of faces as (x, y, w, h, confidence) in ORIGINAL frame coordinates,
     with padding already applied.
     """
@@ -87,10 +85,8 @@ def detect_faces_ssd(net, frame_bgr):
 
         # scale back to original frame
         if SCALE != 1.0:
-            x1 = int(x1 / SCALE)
-            y1 = int(y1 / SCALE)
-            x2 = int(x2 / SCALE)
-            y2 = int(y2 / SCALE)
+            x1 = int(x1 / SCALE); y1 = int(y1 / SCALE)
+            x2 = int(x2 / SCALE); y2 = int(y2 / SCALE)
 
         # clamp
         x1 = clamp(x1, 0, w - 1)
@@ -115,8 +111,7 @@ def detect_faces_ssd(net, frame_bgr):
 
     faces.sort(key=lambda t: t[4], reverse=True)
     return faces
-    
-    
+
 def main():
     print("Loading HEF model on Hailo NPU...")
     hef = HEF(MODEL_PATH)
@@ -147,14 +142,8 @@ def main():
         except Exception:
             pass
         picam2.start()
-
-        # Stability system
-        system = EmotionSystem(window_size=1)
-
-        # stare pentru buzzer
-        last_buzzed_emotion = None
-        last_buzz_time = 0.0
-        BUZZ_COOLDOWN = 1.5
+       # Stability system
+        system = EmotionSystem(window_size=15)
 
         print("System started! Press 'q' to quit.")
 
@@ -184,29 +173,12 @@ def main():
                             outputs = infer_pipeline.infer({input_name: input_tensor})
                             current_latency = (time.perf_counter() - start_inf) * 1000.0
 
-
                             probs = outputs[output_name][0]
                             idx = int(np.argmax(probs))
                             raw_label = LABELS.get(idx, "UNK")
 
                             system.update_buffer(raw_label)
                             stable_label = system.get_stable_emotion()
-
-                            # apel buzzer doar cand se schimba emotia stabila
-                            now = time.time()
-                            if (
-                                stable_label
-                                and stable_label != last_buzzed_emotion
-                                and (now - last_buzz_time) > BUZZ_COOLDOWN
-                            ):
-                                threading.Thread(
-                                    target=buzz_for_emotion,
-                                    args=(stable_label,),
-                                    daemon=True
-                                ).start()
-
-                                last_buzzed_emotion = stable_label
-                                last_buzz_time = now
 
                             color = (0, 255, 0) if stable_label == "HAPPY" else (0, 0, 255)
                             cv2.rectangle(frame, (x, y), (x + w, y + h), color, 2)
@@ -252,3 +224,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+

@@ -1,0 +1,4 @@
+timestamp,scenario,duration_s,samples,mean_estimated_pmic_power_w,min_estimated_pmic_power_w,max_estimated_pmic_power_w,mean_ext5v_v,min_ext5v_v,mean_temp_c,max_temp_c
+2026-06-11 11:21:22,idle,60.0,59,1.8856,1.6335,3.4011,5.1442,5.1362,38.3,39.15
+2026-06-11 11:24:17,cpu_live,60.0,58,6.4845,2.2462,10.2826,5.1615,5.0933,54.32,60.6
+2026-06-11 11:25:44,npu_live,60.0,58,6.0459,2.324,11.9548,5.1487,5.0384,58.54,61.7
